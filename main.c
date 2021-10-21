@@ -12,14 +12,17 @@ int main()
 	int endian;
 	char *buffer = mlx_get_data_addr(image, &pixel_bits, &line_bytes, &endian);
 
-	int color = 0xABCDEF;
+	int color = 800080;
+	int y;
+	int x;
 
+	y = -1;
 	if (pixel_bits != 32)
 		color = mlx_get_color_value(mlx, color);
-
-	for(int y = 0; y < 360; ++y)
+	while (++y < 360)
 	{
-		for(int x = 0; x < 640; ++x)
+		x = -1;
+		while (++x < 640)
 		{
 			int pixel = (y * line_bytes) + (x * 4);
 
