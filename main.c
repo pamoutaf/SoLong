@@ -1,53 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
+/*   Updated: 2021/11/16 11:10:53 by pamoutaf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mlx.h"
-#include <stdio.h>
+#include "solong.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    void *mlx = mlx_init();
-    void *win = mlx_new_window(mlx, 640, 360, "Tutorial Window - Create Image");
-
-    void *image = mlx_new_image(mlx, 640, 360);
-
-    int pixel_bits;
-	int line_bytes;
-	int endian;
-	char *buffer = mlx_get_data_addr(image, &pixel_bits, &line_bytes, &endian);
-
-	int color = 0xABCDEF;
-	int y;
-	int x;
-
-	void	*img;
-	char	*relative_path = "./smiley.xpm";
-	int		img_width;
-	int		img_height;
-
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height); //protect
-	y = -1;
-	if (pixel_bits != 32)
-		color = mlx_get_color_value(mlx, color);
-	while (++y < 360)
-	{
-		x = -1;
-		mlx_put_image_to_window(mlx, win, img, x, y);
-		while (++x < 640)
-		{
-			int pixel = (y * line_bytes) + (x * 4);
-			if (endian == 1)        // Most significant (Alpha) byte first
-			{
-				buffer[pixel + 0] = (color >> 24);
-				buffer[pixel + 1] = (color >> 16) & 0xFF;
-				buffer[pixel + 2] = (color >> 8) & 0xFF;
-				buffer[pixel + 3] = (color) & 0xFF;
-			}
-			else if (endian == 0)   // Least significant (Blue) byte first
-			{
-				buffer[pixel + 0] = (color) & 0xFF;
-				buffer[pixel + 1] = (color >> 8) & 0xFF;
-				buffer[pixel + 2] = (color >> 16) & 0xFF;
-				buffer[pixel + 3] = (color >> 24);
-			} 
-  		}
-	}
-    mlx_loop(mlx);
+	void *mlx;
+	void *win;
+	t_map_data	data;
+	
+	if (argc != 2)
+		return (-1);
+	parse_map(argv[1], &data);
+	mlx =  mlx_init();
+	win = mlx_new_window(mlx, data.len * 64, data.height * 64, "test");
+	mlx_key_hook(win, key_hook, 0);
+	mlx_pixel_put(mlx, win, (data.len* 64)/2, (data.height * 64)/2, 0xFFFFFF);
+	mlx_loop(mlx);
 }
