@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/16 10:42:46 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:43:26 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "solong.h"
-
-void	open_window(t_map_data *data)
-{
-	void *mlx = mlx_init();
-	void *win = mlx_new_window(mlx, data->len * 64, data->height * 64, "test");
-
-	mlx_pixel_put(mlx, win, (data->len* 64)/2, (data->height * 64)/2, 0xFFFFFF);
-}
 
 int	count_lines(const char *map)
 {
@@ -48,7 +40,7 @@ void parse_map(const char *filename, t_map_data *data)
 	
 	data->height = count_lines(filename);
 	printf("%i\n", data->height);
-	data->map = malloc(sizeof(char *) * data->height);
+	data->map = malloc(sizeof(char *) * data->height + 1);
 	if (!data->map)
 	{
 		printf("Error");
@@ -63,7 +55,12 @@ void parse_map(const char *filename, t_map_data *data)
 	i = 0;
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);
+	data->map[i] = NULL;
 	data->len = ft_strlen(data->map[0]) - 1;
-	printf("%i\n", data->len);
-	printf("%s", data->map[0]);
+	printf("len : %i\n", data->len);
+	i = 0;
+	while (data->map[i])
+		printf("%s", data->map[i++]);
+	close (fd);
 }
+// check get next line

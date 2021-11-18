@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/16 23:31:58 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:11:09 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map
 
 void	parse_map(const char *filename, t_map_data *data);
 int		key_hook(int keycode, void *param);
-void	png_to_win(void *mlx_ptr, t_sprite *sprite, t_map_data *data);
+void	png_to_win(void *mlx_ptr, t_sprite *sprite);
+void png_to_map(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite);
 
 #endif
