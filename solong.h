@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/16 11:09:41 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:31:58 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ typedef struct s_list
 	int		fd;
 }				t_map_data;
 
+typedef struct s_sprite
+{
+	void	*start;
+	void	*wall;
+	void	*end;
+}				t_sprite;
+
+
+
 typedef struct s_pos
 {
 	int	x;
@@ -40,4 +49,6 @@ typedef struct s_map
 
 void	parse_map(const char *filename, t_map_data *data);
 int		key_hook(int keycode, void *param);
+void	png_to_win(void *mlx_ptr, t_sprite *sprite, t_map_data *data);
+
 #endif

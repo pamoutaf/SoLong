@@ -1,22 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_colors.c                                        :+:      :+:    :+:   */
+/*   ft_sprites_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 11:49:25 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/10/21 11:49:52 by pamoutaf         ###   ########.fr       */
+/*   Created: 2021/11/16 12:20:25 by pamoutaf          #+#    #+#             */
+/*   Updated: 2021/11/16 22:41:08 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-
-int rgb_to_int(double r, double g, double b)
-{
-    int color = 0;
-    color |= (int)(b * 255);
-    color |= (int)(g * 255) << 8;
-    color |= (int)(r * 255) << 16;
-    return (color);
-}
+void	
