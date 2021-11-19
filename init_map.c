@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/18 17:43:26 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:17:35 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,33 @@ int	count_lines(const char *map)
 	return (numlines);
 }
 
+void end_of_file(t_map_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->height)
+	{
+		j = 0;
+		while (j < data->len)
+		{
+			if (data->map[i][j] == '\n')
+				data->map[i][j] = '\0';
+			j++;
+		}
+		i++;
+	}
+}
+
 void parse_map(const char *filename, t_map_data *data)
 {
-	int		i;
-	int		fd;
-	
+	int	i;
+	int	fd;
+		
 	data->height = count_lines(filename);
 	printf("%i\n", data->height);
-	data->map = malloc(sizeof(char *) * data->height + 1);
+	data->map = malloc(sizeof(char *) * data->height);
 	if (!data->map)
 	{
 		printf("Error");
@@ -55,12 +74,8 @@ void parse_map(const char *filename, t_map_data *data)
 	i = 0;
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);
-	data->map[i] = NULL;
 	data->len = ft_strlen(data->map[0]) - 1;
-	printf("len : %i\n", data->len);
-	i = 0;
-	while (data->map[i])
-		printf("%s", data->map[i++]);
-	close (fd);
+	end_of_file(data);
+	printf("%i\n", data->len);
+	printf("%s", data->map[0]);
 }
-// check get next line
