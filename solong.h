@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/18 17:11:09 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:23:40 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ typedef struct s_list
 
 typedef struct s_sprite
 {
-	void	*start;
+	void	*empty;
 	void	*wall;
 	void	*end;
+	void	*player;
 }				t_sprite;
-
-
 
 typedef struct s_pos
 {
@@ -41,15 +40,19 @@ typedef struct s_pos
 	int	y;
 }	t_pos;
 
-typedef struct s_map
+typedef struct s_mlx_data
 {
-	char	**map;
-	t_pos	size;
-}	t_map;
+	void	*win;
+	void	*mlx;
+	t_sprite	img;
+	t_pos		position;
+}				t_mlx_data;
 
 void	parse_map(const char *filename, t_map_data *data);
-int		key_hook(int keycode, void *param);
+int		key_hook(int keycode, t_mlx_data mlx_data);
 void	png_to_win(void *mlx_ptr, t_sprite *sprite);
-void png_to_map(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite);
+t_pos	png_to_map(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite);
+void	grab_pos_player(void *mlx_ptr, void *win, t_pos *pos);
+int		move_left(void *mlx_ptr, void *win, t_sprite *sprite, t_pos *pos);
 
 #endif

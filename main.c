@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/18 17:14:46 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:27:14 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 int main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*win;
+	t_mlx_data	mlx_data;
 	t_map_data	data;
 	t_sprite	sprite;
+	t_pos		pos;
 	
 	if (argc != 2)
 		return (-1);
 	parse_map(argv[1], &data);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, data.len * 64, data.height * 64, "test");
-	mlx_key_hook(win, key_hook, 0);
-	png_to_win(mlx, &sprite);
-	png_to_map(mlx, &data, win, &sprite);
-	mlx_loop(mlx);
+	mlx_data.mlx = mlx_init();
+	mlx_data.win = mlx_new_window(mlx_data.mlx, data.len * 64, data.height * 64, "test");
+	png_to_win(mlx_data.mlx, &sprite);
+	pos = png_to_map(mlx_data.mlx, &data, mlx_data.win, &sprite);
+	printf("x: %d y: %d\n", pos.x, pos.y);
+	mlx_hook(mlx_data.win, 2, 0, key_hook, 0);
+	printf("-----\n");
+	printf("-----\n");
+	mlx_loop(mlx_data.mlx);
 }

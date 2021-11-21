@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/19 16:17:35 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:06:44 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void parse_map(const char *filename, t_map_data *data)
 {
 	int	i;
 	int	fd;
-		
+	
 	data->height = count_lines(filename);
 	printf("%i\n", data->height);
 	data->map = malloc(sizeof(char *) * data->height);
@@ -76,6 +76,7 @@ void parse_map(const char *filename, t_map_data *data)
 		data->map[i++] = get_next_line(fd);
 	data->len = ft_strlen(data->map[0]) - 1;
 	end_of_file(data);
+	printf("%s", data->map[0]);
 	printf("%i\n", data->len);
 	printf("%s", data->map[0]);
 }
