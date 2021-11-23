@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/23 14:05:24 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:02:48 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int key_hook(int keycode, void *param)
 	
 	data = (t_mlx_data*)param;
 	printf("keycode : %d\n", keycode);
-	pos = png_to_map(data->mlx, data, data->win, data->img->player);
+	pos = png_to_map(data->mlx, data->map_data, data->win, data->img->player);
 	if (keycode == 13)
-		move_vertical(data, &pos, 1);
+		move_vertical(data->map_data, &pos, 1);
 	if (keycode == 53)
 		exit(0);
 	return (0);

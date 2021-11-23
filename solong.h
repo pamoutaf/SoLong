@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/23 14:06:09 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:01:55 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_mlx_data
 	t_sprite	*img;
 	t_map_data	*data;
 	t_pos		*pos;
+	t_map_data	*map_data;
 }				t_mlx_data;
 
 void	parse_map(const char *filename, t_map_data *data);
