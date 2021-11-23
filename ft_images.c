@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_images.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:49:40 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/21 19:10:15 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:49:51 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void png_to_win(void *mlx_ptr, t_sprite *sprite)
 	sprite->player = mlx_png_file_to_image(mlx_ptr, "./player.png", &width, &height);
 }
 
-void grab_pos_player(void *mlx_ptr, void *win, t_pos *pos)
+static void grab_pos_player(void *mlx_ptr, void *win, t_pos *pos)
 {
 	(void)mlx_ptr;
 	(void)win;
@@ -37,6 +37,7 @@ t_pos png_to_map(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite)
 	t_pos player;
 
 	pos.y = 0;
+	printf("check here or not\n");
 	while (pos.y < data->height)
 	{
 		pos.x = 0;

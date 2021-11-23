@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"__hash_table": "c",
+		"functional": "c",
+		"type_traits": "c",
+		"version": "c"
+	}
+}
