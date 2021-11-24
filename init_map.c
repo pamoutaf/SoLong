@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/23 13:36:58 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:51:45 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void end_of_file(t_map_data *data)
 	}
 }
 
-void parse_map(const char *filename, t_map_data *data)
+t_map_data *parse_map(const char *filename, t_map_data *data)
 {
 	int	i;
 	int	fd;
@@ -79,4 +79,5 @@ void parse_map(const char *filename, t_map_data *data)
 	printf("%s", data->map[0]);
 	printf("%i\n", data->len);
 	printf("%s", data->map[0]);
+	return (data);
 }

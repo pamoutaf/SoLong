@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/23 17:01:55 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:42:23 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ typedef struct s_pos
 
 typedef struct s_sprite
 {
-	void	*empty;
-	void	*wall;
-	void	*end;
-	void	*player;
+	void	*sprite_empty;
+	void	*sprite_wall;
+	void	*sprite_end;
+	void	*sprite_player;
 }				t_sprite;
 
-typedef struct s_list
+typedef struct s_map_data
 {
 	int		i;
 	int		height;
@@ -40,22 +40,21 @@ typedef struct s_list
 	int		fd;
 }				t_map_data;
 
-typedef struct s_mlx_data
+typedef struct s_global
 {
 	void		*win;
 	void		*mlx;
 	t_sprite	*img;
-	t_map_data	*data;
 	t_pos		*pos;
 	t_map_data	*map_data;
-}				t_mlx_data;
-
-void	parse_map(const char *filename, t_map_data *data);
-int		key_hook(int keycode, void *param);
-void	png_to_win(void *mlx_ptr, t_sprite *sprite);
-t_pos	png_to_map(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite);
-int		move_left(t_pos *pos, int direction);
-int		check_wall(t_map_data *data, int x, int y);
-int		move_vertical(t_map_data *data, t_pos *pos, int direction);
+}				t_global;
+//TODO (paula 24 nov): makefile headers dependencies
+t_map_data	*parse_map(const char *filename, t_map_data *data);
+int			key_hook(int keycode, void *param);
+void		load_img(void *mlx_ptr, t_sprite *sprite);
+t_pos		png_to_win(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite);
+int			move_left(t_pos *pos, int direction);
+int			check_wall(t_map_data *data, int x, int y);
+void		move_vertical(t_map_data *data, t_pos *pos, int direction);
 
 #endif

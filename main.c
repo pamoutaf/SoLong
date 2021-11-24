@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/23 14:04:38 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:41:42 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,25 @@
 
 int main(int argc, char **argv)
 {
-	t_mlx_data	mlx_data;
-	t_map_data	data;
+	t_global	global;
+	t_map_data	map_data;
 	t_sprite	sprite;
 	t_pos		pos;
 	
 	if (argc != 2)
 		return (-1);
-	parse_map(argv[1], &data);
-	mlx_data.mlx = mlx_init();
-	mlx_data.win = mlx_new_window(mlx_data.mlx, data.len * 64, data.height * 64, "test");
-	png_to_win(mlx_data.mlx, &sprite);
-	pos = png_to_map(mlx_data.mlx, &data, mlx_data.win, &sprite);
-	printf("x: %d y: %d\n", pos.x, pos.y);
-	mlx_hook(mlx_data.win, 2, 0, key_hook, &mlx_data);
+	global.map_data = &map_data;
+	parse_map(argv[1], global.map_data);
+	global.mlx = mlx_init();
+	global.win = mlx_new_window(global.mlx, global.map_data->len * 64, global.map_data->height * 64, "test");
+	global.img = &sprite;
+	load_img(global.mlx, global.img);
+	printf("test pointer : %p\n", global.img->sprite_player);
+	pos = png_to_win(global.mlx, global.map_data, global.win, global.img);
+	//printf("x: %d y: %d\n", pos.x, pos.y);
+	mlx_hook(global.win, 2, 0, key_hook, &global);
 	printf("-----\n");
 	printf("-----\n");
-	printf("data pointer : %p\n", mlx_data.mlx);
-	mlx_loop(mlx_data.mlx);
+	printf("map_data pointer : %p\n", &global);
+	mlx_loop(global.mlx);
 }

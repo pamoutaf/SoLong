@@ -6,7 +6,7 @@
 #    By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/11/23 17:20:07 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/11/23 17:37:33 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SOURCES =   ft_images.c ft_keys.c main.c init_map.c ${SRCS}get_next_line.c \
 
 OBJECTS = $(subst .c,.o,$(SOURCES))
 
-CFLAGS = -Wall -Wextra -g -I libft -I minilibx_mms_20200219/ -g -fsanitize=address#-Werror
+CFLAGS = -Wall -Wextra -g -I libft -I minilibx_mms_20200219/ -g #-fsanitize=address#-Werror
 LINKS = -g -L libft \
 		-L. -lmlx -framework OpenGL -framework AppKit 
 
