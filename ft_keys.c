@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/25 16:32:06 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:01:45 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,5 @@ t_pos move_horizontal(t_global *global, t_map_data *data, int direction)
 		printf("new position x: %i\n", pos.x);
 		printf("----------------------------------\n");
 	}
-	return (&pos.x);
+	return (pos);
 }
