@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:49:40 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/24 15:41:38 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/25 15:59:07 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ t_pos png_to_win(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite)
 {
 	t_pos pos;
 	t_pos player;
-
-	printf("PNG_T0_MAPsprite : %p\n", sprite);
+	
 	pos.y = 0;
 	while (pos.y < data->height)
 	{
