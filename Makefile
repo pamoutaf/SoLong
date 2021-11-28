@@ -6,7 +6,7 @@
 #    By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/11/25 23:23:42 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/11/28 21:53:34 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = main
 SRCS = ./srcs/
 
 SOURCES =   ft_images.c ft_keys.c main.c init_map.c ${SRCS}get_next_line.c \
-            ${SRCS}get_next_line_utils.c \
+            ${SRCS}get_next_line_utils.c ft_itoa.c \
 
 OBJECTS = $(subst .c,.o,$(SOURCES))
 

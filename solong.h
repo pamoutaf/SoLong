@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/28 14:43:34 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/28 21:56:19 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_map_data
 	int		len;
 	char	**map;
 	int		fd;
+	int		steps;
 }				t_map_data;
 
 typedef struct s_global
@@ -57,6 +58,9 @@ int			move_left(t_pos *pos, int direction);
 int			can_move(t_map_data *data, int x, int y);
 void		move_vertical(t_global *global, t_map_data *data, int direction);
 void		move_horizontal(t_global *global, t_map_data *data, int direction);
+void		error_message();
+void		ft_put_steps(t_global *global);
+char		*ft_itoa(int n);
 
 
 #endif
