@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_images.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:49:40 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/25 15:59:07 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:35:42 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,28 @@ static void grab_pos_player(void *mlx_ptr, void *win, t_pos *pos)
 	printf("position x: %d, position y: %d\n", pos->x, pos->y);
 }
 
-t_pos png_to_win(void *mlx_ptr, t_map_data *data, void *win, t_sprite *sprite)
+t_pos png_to_win(t_global *global)
 {
-	t_pos pos;
-	t_pos player;
+	t_pos	player;
+	t_pos	pos;
 	
 	pos.y = 0;
-	while (pos.y < data->height)
+	while (pos.y < global->map_data->height)
 	{
 		pos.x = 0;
-		while (pos.x < data->len)
+		while (pos.x < global->map_data->len)
 		{
-			if(data->map[pos.y][pos.x] == '0')
-				mlx_put_image_to_window(mlx_ptr, win, sprite->sprite_empty, pos.x * 64, pos.y * 64);
-			if(data->map[pos.y][pos.x] == '1')
-				mlx_put_image_to_window(mlx_ptr, win, sprite->sprite_wall, pos.x * 64, pos.y * 64);
-			if(data->map[pos.y][pos.x] == 'E')
-				mlx_put_image_to_window(mlx_ptr, win, sprite->sprite_end, pos.x * 64, pos.y * 64);
-			if(data->map[pos.y][pos.x] == 'P')
+			if(global->map_data->map[pos.y][pos.x] == '0')
+				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x * 64, pos.y * 64);
+			if(global->map_data->map[pos.y][pos.x] == '1')
+				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, pos.x * 64, pos.y * 64);
+			if(global->map_data->map[pos.y][pos.x] == 'E')
+				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_end, pos.x * 64, pos.y * 64);
+			if(global->map_data->map[pos.y][pos.x] == 'P')
 			{
-				mlx_put_image_to_window(mlx_ptr, win, sprite->sprite_empty, pos.x * 64, pos.y * 64);
-				mlx_put_image_to_window(mlx_ptr, win, sprite->sprite_player, pos.x * 64, pos.y * 64);
-				grab_pos_player(mlx_ptr, win, &pos);
+				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x * 64, pos.y * 64);
+				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, pos.x * 64, pos.y * 64);
+				grab_pos_player(global->mlx, global->win, &pos);
 				player = pos;
 			}
 			pos.x++;

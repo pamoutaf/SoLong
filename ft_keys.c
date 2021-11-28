@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/25 18:01:45 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:48:42 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int key_hook(int keycode, void *param)
 	return (0);
 }
 
-int	check_wall(t_map_data *data, int x, int y)
+int	can_move(t_map_data *data, int x, int y)
 {
-	if (data->map[y][x] == 1)
+	if (data->map[y][x] == '1')
 		return (0);
 	printf("map data checkwall: %p\n", data);
 	return (1);
@@ -45,46 +45,37 @@ void move_vertical(t_global *global, t_map_data *data, int direction)
 {
 	int		x;
 	int		y;
-	t_pos	pos;
-
-	pos = png_to_win(global->mlx, global->map_data, global->win, global->img);
-	x = pos.x;
-	y = pos.y;
-	printf("position Y : %i\n", pos.y);
-	printf("position X : %i\n", pos.x);
-	if (check_wall(data, x, y + direction))
+	
+	x = global->pos.x;
+	y = global->pos.y;
+	printf("position Y : %i\n", global->pos.y);
+	printf("position X : %i\n", global->pos.x);
+	if (can_move(data, x, y + direction))
 	{
-		//mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x, pos.y);
-		pos.y = pos.y +(direction);
-		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, pos.x * 64, pos.y * 64);
-		//mlx_destroy_image(global->mlx, global->img->sprite_player);
-		printf("new position y: %i\n", pos.y);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
+		global->pos.y = global->pos.y +(direction);
+
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, global->pos.x * 64, global->pos.y * 64);
+		printf("new position x: %i\n", global->pos.y);
+		printf("----------------------------------\n");
 	}
 }
 
-t_pos move_horizontal(t_global *global, t_map_data *data, int direction)
+void move_horizontal(t_global *global, t_map_data *data, int direction)
 {
 	int		x;
 	int		y;
-	t_pos	pos;
-	void	*mlx_destroy;
-	void	*img_destroy;
-
-	pos = png_to_win(global->mlx, global->map_data, global->win, global->img);
-	x = pos.x;
-	y = pos.y;
-	//mlx_destroy = global->mlx;
-	//img_destroy = global->img->sprite_player;
-	printf("position Y : %i\n", pos.y);
-	printf("position X : %i\n", pos.x);
-	if (check_wall(data, x + direction, y))
+	
+	x = global->pos.x;
+	y = global->pos.y;
+	printf("position Y : %i\n", global->pos.y);
+	printf("position X : %i\n", global->pos.x);
+	if (can_move(data, x + direction, y))
 	{
-		//mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x, pos.y);
-		pos.x = pos.x +(direction);
-		//mlx_destroy_image(mlx_destroy, img_destroy);
-		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, pos.x * 64, pos.y * 64);
-		printf("new position x: %i\n", pos.x);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
+		global->pos.x = global->pos.x +(direction);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, global->pos.x * 64, global->pos.y * 64);
+		printf("new position x: %i\n", global->pos.x);
 		printf("----------------------------------\n");
 	}
-	return (pos);
 }
