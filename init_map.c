@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/28 21:42:06 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:19:29 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,32 @@ void end_of_file(t_map_data *data)
 		}
 		i++;
 	}
+	data->map[i] = NULL;
 }
 
 void	check_map_len(t_map_data *data)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 	
 	j = 0;
 	i = ft_strlen(data->map[j]);
 	
 	while (data->map[j])
 	{
-		if (i == ft_strlen(data->map[j]))
+		if (i == data->len + 1 || (j == data->height && i == data->len))
 		{
+			printf("%s\n", data->map[j]);
 			j++;
-			printf("debug\n");
 		}
-		//else
-	//	error_message();
+		else
+		error_message();
 	}
 }
 
 void	error_message()
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -85,7 +86,7 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	
 	data->height = count_lines(filename);
 	printf("%i\n", data->height);
-	data->map = malloc(sizeof(char *) * data->height);
+	data->map = malloc(sizeof(char *) * (data->height + 1));
 	if (!data->map)
 		error_message();
 	fd = open(filename, O_RDONLY);
@@ -96,6 +97,6 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 		data->map[i++] = get_next_line(fd);
 	data->len = ft_strlen(data->map[0]) - 1;
 	end_of_file(data);
-	//check_map_len(data);
+	check_map_len(data);
 	return (data);
 }
