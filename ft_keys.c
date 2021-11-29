@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/25 18:40:18 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:35:24 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,69 +18,128 @@ int key_hook(int keycode, void *param)
 	t_global	*global;
 	
 	global = (t_global*)param;
-	printf("keycode : %d\n", keycode);
-	//printf("key_hook pointer : %p\n", global->win);
 	if (keycode == 13)
-		move_vertical(global, global->map_data, -1);
+		move_back(global, global->map_data);
 	if (keycode == 1)
-		move_vertical(global, global->map_data, 1);
+		move_front(global, global->map_data);
 	if (keycode == 0)
-		move_horizontal(global, global->map_data, -1);
+		move_left(global, global->map_data);
 	if (keycode == 2)
-		move_horizontal(global, global->map_data, 1);
+		move_right(global, global->map_data);
 	if (keycode == 53)
 		exit(0);
 	return (0);
 }
 
-int	check_wall(t_map_data *data, int x, int y)
+int	can_move(t_map_data *data, int x, int y)
 {
-	if (data->map[y][x] == 1)
+	if (data->map[y][x] == '1') //check that y and x is between 0 and data len & data height
 		return (0);
-	printf("map data checkwall: %p\n", data);
+	if (data->map[y][x] == 'E')
+	{
+		write(1, "Congrats! You finished the level!", 33);
+		exit(0);
+	}
 	return (1);
 }
 
-void move_vertical(t_global *global, t_map_data *data, int direction)
+void move_right(t_global *global, t_map_data *data)
 {
 	int		x;
 	int		y;
-	t_pos	pos;
-
-	pos = png_to_win(global->mlx, global->map_data, global->win, global->img);
-	x = pos.x;
-	y = pos.y;
-	printf("position Y : %i\n", pos.y);
-	printf("position X : %i\n", pos.x);
-	if (check_wall(data, x, y + direction))
+	char	*add;
+	
+	x = global->pos.x;
+	y = global->pos.y;
+	if (can_move(data, x + 1, y))
 	{
-		//mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x, pos.y);
-		pos.y = pos.y +(direction);
-		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, pos.x * 64, pos.y * 64);
-		//mlx_destroy_image(global->mlx, global->img->sprite_player);
-		printf("new position y: %i\n", pos.y);
+		if(global->map_data->map[y][x] == 'E')
+			mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
+		add = ft_itoa(global->map_data->steps);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, 0, 0);
+		mlx_string_put(global->mlx, global->win, 10, 10, 0xFFFFFF, add);
+		free(add);
+		global->map_data->steps++;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
+		global->pos.x = global->pos.x + 1;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_right, global->pos.x * 64, global->pos.y * 64);
 	}
 }
 
-void move_horizontal(t_global *global, t_map_data *data, int direction)
+void move_left(t_global *global, t_map_data *data)
 {
-	t_pos	pos;
-	void	*mlx_destroy;
-	void	*img_destroy;
-
+	int		x;
+	int		y;
+	char	*add;
 	
-	//mlx_destroy = global->mlx;
-	//img_destroy = global->img->sprite_player;
-	printf("position Y : %i\n", pos.y);
-	printf("position X : %i\n", pos.x);
-	if (check_wall(data, pos.x + direction, pos.y))
+	x = global->pos.x;
+	y = global->pos.y;
+	
+	if (can_move(data, x - 1, y))
 	{
-		//mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x, pos.y);
-		pos.x = pos.x +(direction);
-		pos = png_to_win(global->mlx, global->map_data, global->win, global->img);
-		//mlx_destroy_image(mlx_destroy, img_destroy);
-		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player, pos.x * 64, pos.y * 64);
-		printf("new position x: %i\n", pos.x);
-		printf("----------------------------------\n");
+		if(global->map_data->map[y][x] == 'E')
+			mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
+		add = ft_itoa(global->map_data->steps);
+		printf("first step : %i\n", global->map_data->steps);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, 0, 0);
+		mlx_string_put(global->mlx, global->win, 10, 10, 0xFFFFFF, add);
+		free(add);
+		global->map_data->steps++;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
+		global->pos.x = global->pos.x - 1;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_left, global->pos.x * 64, global->pos.y * 64);
+		printf("total steps so far : %i\n", global->map_data->steps);
+	}
+}
+
+void move_front(t_global *global, t_map_data *data)
+{
+	int		x;
+	int		y;
+	char	*add;
+	
+	x = global->pos.x;
+	y = global->pos.y;
+	if (can_move(data, x, y + 1))
+	{
+		if(global->map_data->map[y][x] == 'E')
+			mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
+		add = ft_itoa(global->map_data->steps);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, 0, 0);
+		mlx_string_put(global->mlx, global->win, 10, 10, 0xFFFFFF, add);
+		printf("first step : %i\n", global->map_data->steps);
+		free(add);
+		printf("after free %s\n", add);
+		global->map_data->steps++;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
+		global->pos.y = global->pos.y + 1;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
+		printf("total steps so far : %i\n", global->map_data->steps);
+	}
+}
+
+void move_back(t_global *global, t_map_data *data)
+{
+	int		x;
+	int		y;
+	char	*add;
+	
+	x = global->pos.x;
+	y = global->pos.y;
+	if (can_move(data, x, y - 1 ))
+	{
+		if(global->map_data->map[y][x] == 'E')
+			mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
+		add = ft_itoa(global->map_data->steps);
+		printf("first step : %i\n", global->map_data->steps);
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, 0, 0);
+		mlx_string_put(global->mlx, global->win, 10, 10, 0xFFFFFF, add);
+		free(add);
+		printf("after free %s\n", add);
+		global->map_data->steps++;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
+		global->pos.y = global->pos.y - 1;
+		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_back, global->pos.x * 64, global->pos.y * 64);
+		printf("total steps so far : %i\n", global->map_data->steps);
 	}
 }

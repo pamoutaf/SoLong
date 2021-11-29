@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/23 17:51:45 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/28 21:42:06 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,32 @@ void end_of_file(t_map_data *data)
 	}
 }
 
+void	check_map_len(t_map_data *data)
+{
+	size_t	i;
+	size_t	j;
+	
+	j = 0;
+	i = ft_strlen(data->map[j]);
+	
+	while (data->map[j])
+	{
+		if (i == ft_strlen(data->map[j]))
+		{
+			j++;
+			printf("debug\n");
+		}
+		//else
+	//	error_message();
+	}
+}
+
+void	error_message()
+{
+	write(1, "Error\n", 6);
+	exit(0);
+}
+
 t_map_data *parse_map(const char *filename, t_map_data *data)
 {
 	int	i;
@@ -61,23 +87,15 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	printf("%i\n", data->height);
 	data->map = malloc(sizeof(char *) * data->height);
 	if (!data->map)
-	{
-		printf("Error");
-		exit(-1);
-	}
+		error_message();
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Error");
-		exit(-1);
-	}
+		error_message();
 	i = 0;
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);
 	data->len = ft_strlen(data->map[0]) - 1;
 	end_of_file(data);
-	printf("%s", data->map[0]);
-	printf("%i\n", data->len);
-	printf("%s", data->map[0]);
+	//check_map_len(data);
 	return (data);
 }
