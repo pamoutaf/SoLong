@@ -28,12 +28,12 @@ char	*ft_strchr(const char *str, int n)
 
 size_t	ft_strlen(const char *str)
 {
-	size_t	a;
+	int	i;
 
-	a = 0;
-	while (str[a])
-		a++;
-	return (a);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strdup(const char *str)
