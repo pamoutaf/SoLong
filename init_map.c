@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/30 15:51:22 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:10:32 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ void end_of_file(t_map_data *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < data->height)
+	j = 0;
+	while (j < data->height)
 	{
-		j = 0;
-		while (j < data->len)
+		i = 0;
+		while (data->map[j][i])
 		{
-			if (data->map[i][j] == '\n')
-				data->map[i][j] = '\0';
-			j++;
+			if (data->map[j][i] == '\n')
+				data->map[j][i] = '\0';
+			i++;
 		}
-		i++;
+		j++;
 	}
-	data->map[i] = NULL;
+	data->map[j] = NULL;
 }
 
 void	check_map_len(t_map_data *data)
@@ -80,13 +80,18 @@ void	check_one_map(t_map_data *data)
 
 	j = 0;
 	i = 0;
-	while (data->map[j])
+	while (data->map[j] || data->map[0][i])
 	{
+		printf("%d %c\n", i, data->map[0][i]);
 		if (data->map[0][i] == '1' && data->map[data->height - 1][i] == '1')
 		{
 			i++;
+			printf("iteration i : %i\n", i);
 			if (data->map[j][0] == '1' && data->map[j][data->len - 1] == '1')
+			{
 				j++;
+				printf("iteration j : %i\n", j);
+			}
 		}
 		else
 		{
@@ -108,7 +113,7 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	int	fd;
 	
 	data->height = count_lines(filename);
-	printf("%i\n", data->height);
+	printf("map height %i\n", data->height);
 	data->map = malloc(sizeof(char *) * (data->height + 1));
 	if (!data->map)
 		error_message();
@@ -119,6 +124,12 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);
 	data->len = ft_strlen(data->map[0]) - 1;
+	i = 0;
+	while (i < data->height)
+	{
+		printf("%s\n", data->map[i]);
+		i++;
+	}
 	end_of_file(data);
 	check_map_len(data);
 	check_one_map(data);

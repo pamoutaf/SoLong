@@ -6,11 +6,11 @@
 #    By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/11/30 13:50:05 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/12/01 14:58:10 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = main
+NAME = solong
 
 SRCS = ./srcs/
 
