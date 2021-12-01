@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/29 14:04:49 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:10:02 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_sprite
 	void	*sprite_player_left;
 	void	*sprite_player_right;
 	void	*sprite_player_back;
+	void	*sprite_collectibles;
 }				t_sprite;
 
 typedef struct s_map_data

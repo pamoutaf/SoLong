@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/29 14:35:24 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:23:06 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void move_front(t_global *global, t_map_data *data)
 		mlx_string_put(global->mlx, global->win, 10, 10, 0xFFFFFF, add);
 		printf("first step : %i\n", global->map_data->steps);
 		free(add);
-		printf("after free %s\n", add);
 		global->map_data->steps++;
 		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
 		global->pos.y = global->pos.y + 1;
@@ -135,7 +134,6 @@ void move_back(t_global *global, t_map_data *data)
 		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, 0, 0);
 		mlx_string_put(global->mlx, global->win, 10, 10, 0xFFFFFF, add);
 		free(add);
-		printf("after free %s\n", add);
 		global->map_data->steps++;
 		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, global->pos.x * 64, global->pos.y * 64);
 		global->pos.y = global->pos.y - 1;

@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:49:40 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/29 14:03:53 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/11/30 15:21:54 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,13 @@ void load_img(void *mlx_ptr, t_sprite *sprite)
 	sprite->sprite_player_left = mlx_png_file_to_image(mlx_ptr, "./left.png", &width, &height);
 	sprite->sprite_player_right = mlx_png_file_to_image(mlx_ptr, "./right.png", &width, &height);
 	sprite->sprite_player_back = mlx_png_file_to_image(mlx_ptr, "./back.png", &width, &height);
-}
-
-static void grab_pos_player(void *mlx_ptr, void *win, t_pos *pos)
-{
-	(void)mlx_ptr;
-	(void)win;
-	printf("position x: %d, position y: %d\n", pos->x, pos->y);
+	sprite->sprite_collectibles = mlx_png_file_to_image(mlx_ptr, "./ring.png", &width, &height);
 }
 
 t_pos png_to_win(t_global *global)
 {
-	t_pos	player;
 	t_pos	pos;
+	t_pos player;
 	
 	pos.y = 0;
 	while (pos.y < global->map_data->height)
@@ -55,9 +49,11 @@ t_pos png_to_win(t_global *global)
 			{
 				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_empty, pos.x * 64, pos.y * 64);
 				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, pos.x * 64, pos.y * 64);
-				grab_pos_player(global->mlx, global->win, &pos);
 				player = pos;
 			}
+			if(global->map_data->map[pos.y][pos.x] == 'C')
+				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_collectibles, pos.x * 64, pos.y * 64);
+
 			pos.x++;
 		}
 		pos.y++;
