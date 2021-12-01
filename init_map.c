@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/01 15:10:32 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:54:20 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	count_lines(const char *map)
 
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		error_message();
 	numlines = 0;
 	buf = get_next_line(fd);
+	if (!buf)
+		error_message("File probably empty");
 	while (buf != NULL)
 	{
 		numlines++;
@@ -60,6 +62,7 @@ void	check_map_len(t_map_data *data)
 	
 	j = 0;
 	i = ft_strlen(data->map[j]);
+	
 	while (data->map[j])
 	{
 		if (i == ft_strlen(data->map[j]) || (j == data->height - 1 && i == ft_strlen(data->map[0])))
@@ -69,7 +72,7 @@ void	check_map_len(t_map_data *data)
 			j++;
 		}
 		else
-			error_message();
+			error_message("Map lenght not identical");
 	}
 }
 
@@ -94,16 +97,20 @@ void	check_one_map(t_map_data *data)
 			}
 		}
 		else
-		{
-			printf("check_one_map");
-			error_message();
-		}	
+			error_message("Map is not surrounded by 1's");
 	}
 }
 
-void	error_message()
+void	error_message(char *str)
 {
-	write(2, "Error\n", 6);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
 	exit(0);
 }
 
@@ -116,10 +123,10 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	printf("map height %i\n", data->height);
 	data->map = malloc(sizeof(char *) * (data->height + 1));
 	if (!data->map)
-		error_message();
+		error_message("Map Allocation Failed");
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_message();
+		error_message("File Descriptor Failed");
 	i = 0;
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);

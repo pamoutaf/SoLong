@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/30 15:10:02 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:52:49 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void		move_horizontal(t_global *global, t_map_data *data, int direction);
 void		error_message();
 void		ft_put_steps(t_global *global);
 char		*ft_itoa(int n);
-
+int			ft_putchar(char c);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 21:52:19 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/28 21:53:08 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:49:39 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,10 @@ char	*ft_itoa(int n)
 	if (neg == 1)
 		temp[0] = '-';
 	return (temp);
+}
+
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (0);
 }
