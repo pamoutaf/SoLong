@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/02 18:55:22 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:13:58 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	check_one_map(t_map_data *data)
 			i++;
 			printf("iteration i : %i\n", i);
 			printf("data len : %i\n", data->len);
-			if (data->map[j][0] == '1' && data->map[j][data->len] == '1')
+			if (data->map[j][0] == '1' && data->map[j][data->len - 1] == '1')
 			{
 				j++;
 				printf("iteration j : %i\n", j);
@@ -133,7 +133,6 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	i = 0;
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);
-	data->len = ft_strlen(data->map[0]) - 1;
 	i = 0;
 	while (i < data->height)
 	{
@@ -141,6 +140,7 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 		i++;
 	}
 	end_of_file(data);
+	data->len = ft_strlen(data->map[0]);
 	check_map_len(data);
 	check_one_map(data);
 	return (data);
