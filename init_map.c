@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/01 15:54:20 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:55:22 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,18 @@ void	check_map_len(t_map_data *data)
 	j = 0;
 	i = ft_strlen(data->map[j]);
 	
+	printf("i : %zu\n", i);
 	while (data->map[j])
 	{
-		if (i == ft_strlen(data->map[j]) || (j == data->height - 1 && i == ft_strlen(data->map[0])))
+		printf("debug here\n");
+		if (i == ft_strlen(data->map[j]) || (j == data->height - 1 && i == ft_strlen(data->map[0]) - 1))
 		{
 			printf(" data len : %i\n", data->len);
 			printf("%s\n", data->map[j]);
 			j++;
 		}
 		else
-			error_message("Map lenght not identical");
+			error_message("Map length not identical");
 	}
 }
 
@@ -85,12 +87,13 @@ void	check_one_map(t_map_data *data)
 	i = 0;
 	while (data->map[j] || data->map[0][i])
 	{
-		printf("%d %c\n", i, data->map[0][i]);
+		printf(" i %d map %c\n", i, data->map[0][i]);
 		if (data->map[0][i] == '1' && data->map[data->height - 1][i] == '1')
 		{
 			i++;
 			printf("iteration i : %i\n", i);
-			if (data->map[j][0] == '1' && data->map[j][data->len - 1] == '1')
+			printf("data len : %i\n", data->len);
+			if (data->map[j][0] == '1' && data->map[j][data->len] == '1')
 			{
 				j++;
 				printf("iteration j : %i\n", j);
