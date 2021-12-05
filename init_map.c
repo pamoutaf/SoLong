@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 10:03:30 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 10:12:30 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	check_map_len(data);
 	check_one_map(data);
 	is_player(data);
+	is_exit(data);
 	return (data);
 }

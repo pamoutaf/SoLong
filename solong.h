@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 10:03:53 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 10:12:19 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int			ft_putchar(char c);
 void		check_map_len(t_map_data *data);
 void		check_one_map(t_map_data *data);
 void		is_player(t_map_data *data);
+void		is_exit(t_map_data *data);
 
 #endif

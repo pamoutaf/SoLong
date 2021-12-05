@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:35:37 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 10:02:56 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 10:12:05 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,27 @@ void	is_player(t_map_data *data)
 		j++; 
 	}
 	error_message("No player found. Please write a correct map");
+}
+
+void	is_exit(t_map_data *data)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (data->map[j] || data->map[0][i])
+	{
+		i = 0;
+		while (data->map[j][i])
+		{
+			if (data->map[j][i] == 'E')
+				return;
+			i++;
+		}
+		j++; 
+	}
+	error_message("No exit found. Please write a correct map");
 }
 
 void	check_map_len(t_map_data *data)
