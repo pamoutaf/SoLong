@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/30 15:23:06 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:38:30 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,6 @@ int key_hook(int keycode, void *param)
 	if (keycode == 53)
 		exit(0);
 	return (0);
-}
-
-int	can_move(t_map_data *data, int x, int y)
-{
-	if (data->map[y][x] == '1') //check that y and x is between 0 and data len & data height
-		return (0);
-	if (data->map[y][x] == 'E')
-	{
-		write(1, "Congrats! You finished the level!", 33);
-		exit(0);
-	}
-	return (1);
 }
 
 void move_right(t_global *global, t_map_data *data)

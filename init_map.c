@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/02 19:13:58 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 10:03:30 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,55 +55,6 @@ void end_of_file(t_map_data *data)
 	data->map[j] = NULL;
 }
 
-void	check_map_len(t_map_data *data)
-{
-	size_t	i;
-	int	j;
-	
-	j = 0;
-	i = ft_strlen(data->map[j]);
-	
-	printf("i : %zu\n", i);
-	while (data->map[j])
-	{
-		printf("debug here\n");
-		if (i == ft_strlen(data->map[j]) || (j == data->height - 1 && i == ft_strlen(data->map[0]) - 1))
-		{
-			printf(" data len : %i\n", data->len);
-			printf("%s\n", data->map[j]);
-			j++;
-		}
-		else
-			error_message("Map length not identical");
-	}
-}
-
-void	check_one_map(t_map_data *data)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (data->map[j] || data->map[0][i])
-	{
-		printf(" i %d map %c\n", i, data->map[0][i]);
-		if (data->map[0][i] == '1' && data->map[data->height - 1][i] == '1')
-		{
-			i++;
-			printf("iteration i : %i\n", i);
-			printf("data len : %i\n", data->len);
-			if (data->map[j][0] == '1' && data->map[j][data->len - 1] == '1')
-			{
-				j++;
-				printf("iteration j : %i\n", j);
-			}
-		}
-		else
-			error_message("Map is not surrounded by 1's");
-	}
-}
-
 void	error_message(char *str)
 {
 	int	i;
@@ -143,5 +94,6 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	data->len = ft_strlen(data->map[0]);
 	check_map_len(data);
 	check_one_map(data);
+	is_player(data);
 	return (data);
 }
