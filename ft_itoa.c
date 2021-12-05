@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 21:52:19 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/01 15:49:39 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:49:50 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ char	*ft_itoa(int n)
 	return (temp);
 }
 
-int	ft_putchar(char c)
+int	ft_putchar_fd(char c, int fd)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 	return (0);
 }

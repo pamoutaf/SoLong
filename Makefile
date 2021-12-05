@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+         #
+#    By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/12/03 13:36:01 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/12/05 14:33:07 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SOURCES =   ft_images.c ft_keys.c main.c init_map.c ${SRCS}get_next_line.c ft_it
 
 OBJECTS = $(subst .c,.o,$(SOURCES))
 
-CFLAGS = -Wall -Wextra -g -I libft -I minilibx_mms_20200219/ -g -fsanitize=address #-Werror
+CFLAGS = -Wall -Wextra -Werror -g -I libft -I minilibx_mms_20200219/ -g -fsanitize=address
 LINKS = -L. -lmlx -framework OpenGL -framework AppKit 
 
 all : $(NAME)

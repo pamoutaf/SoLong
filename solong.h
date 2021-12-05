@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 10:12:19 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:49:36 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		move_horizontal(t_global *global, t_map_data *data, int direction);
 void		error_message();
 void		ft_put_steps(t_global *global);
 char		*ft_itoa(int n);
-int			ft_putchar(char c);
+int			ft_putchar_fd(char c, int fd);
 void		check_map_len(t_map_data *data);
 void		check_one_map(t_map_data *data);
 void		is_player(t_map_data *data);

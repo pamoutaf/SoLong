@@ -1,0 +1,4 @@
+- parsing de la map, verifier toutes les cases (only 0, 1, C, P, E)
+- tu dois pas pouvoir sortir sans choper tous les Collectibles
+- verifier que le fichier map finisse avec .ber (non pas .beuh)
+- 

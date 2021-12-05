@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/30 15:30:58 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:50:33 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	t_sprite	sprite;
 	
 	if (argc != 2)
-		return (-1);
+		error_message("Please enter a map");
 	global.map_data = &map_data;
 	parse_map(argv[1], global.map_data);
 	global.mlx = mlx_init();
