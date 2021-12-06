@@ -1,1 +1,0 @@
-- verifier que le fichier map finisse avec .ber (non pas .beuh)

@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/06 13:53:35 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 22:08:18 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	int	fd;
 	
 	data->height = count_lines(filename);
-	printf("map height %i\n", data->height);
 	data->map = malloc(sizeof(char *) * (data->height + 1));
 	if (!data->map)
 		error_message("Map Allocation Failed");
@@ -88,12 +87,6 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	i = 0;
 	while (i < data->height)
 		data->map[i++] = get_next_line(fd);
-	i = 0;
-	while (i < data->height)
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
 	end_of_file(data);
 	data->len = ft_strlen(data->map[0]);
 	check_map_len(data);

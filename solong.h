@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/06 13:53:06 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 23:10:38 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define SO_LONG_H
 
 #include <fcntl.h>
-#include "srcs/get_next_line.h"
+#include "gnl/get_next_line.h"
 #include <stdio.h>
 
 typedef struct s_pos
@@ -25,14 +25,14 @@ typedef struct s_pos
 
 typedef struct s_sprite
 {
-	void	*sprite_empty;
-	void	*sprite_wall;
-	void	*sprite_end;
-	void	*sprite_player_front;
-	void	*sprite_player_left;
-	void	*sprite_player_right;
-	void	*sprite_player_back;
-	void	*sprite_collectibles;
+	void	*empty;
+	void	*wall;
+	void	*end;
+	void	*face;
+	void	*p_left;
+	void	*p_right;
+	void	*back;
+	void	*coll;
 }				t_sprite;
 
 typedef struct s_map_data
@@ -58,7 +58,7 @@ typedef struct s_global
 t_map_data	*parse_map(const char *filename, t_map_data *data);
 int			key_hook(int keycode, void *param);
 void		load_img(void *mlx_ptr, t_sprite *sprite);
-t_pos		png_to_win(t_global *global);
+void		png_to_win(t_global *global);
 void		move_left(t_global *global, t_map_data *data);
 void		move_right(t_global *global, t_map_data *data);
 void		move_front(t_global *global, t_map_data *data);

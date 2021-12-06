@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 14:50:33 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 22:44:07 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int main(int argc, char **argv)
 	global.mlx = mlx_init();
 	global.win = mlx_new_window(global.mlx, global.map_data->len * 64, global.map_data->height * 64, "SoLong");
 	global.map_data->steps = 1;
+	global.map_data->collectibles = 0;
 	global.img = &sprite;
 	load_img(global.mlx, global.img);
-	global.pos = png_to_win(&global);
+	png_to_win(&global);
 	mlx_hook(global.win, 2, 0, key_hook, &global);
 	mlx_loop(global.mlx);
 }
