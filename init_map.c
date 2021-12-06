@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 15:18:35 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:53:35 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ t_map_data *parse_map(const char *filename, t_map_data *data)
 	check_one_map(data);
 	is_player(data);
 	is_exit(data);
+	check_map_name(filename);
+	check_map_character(data);
 	return (data);
 }

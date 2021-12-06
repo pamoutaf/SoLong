@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+         #
+#    By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/12/05 14:33:07 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/12/06 11:41:20 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = solong
 SRCS = ./srcs/
 
 SOURCES =   ft_images.c ft_keys.c main.c init_map.c ${SRCS}get_next_line.c ft_itoa.c \
-            ${SRCS}get_next_line_utils.c ft_protections.c
+            ${SRCS}get_next_line_utils.c ft_protections.c ft_protections_2.c
 
 OBJECTS = $(subst .c,.o,$(SOURCES))
 

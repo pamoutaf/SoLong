@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_protections.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:35:37 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 14:56:54 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:54:21 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,38 @@ int	can_move(t_map_data *data, int x, int y)
 {
 	if (data->map[y][x] == '1')
 		return (0);
-	if (data->map[y][x] == 'E')
+	else if (data->map[y][x] == 'C')
+	{	
+		printf("collectibles %i\n", data->collectibles);
+		data->collectibles--;
+	}
+	else if (data->map[y][x] == 'E' && data->collectibles != 0)
+	{
+		return (0);
+	}
+	else if (data->map[y][x] == 'E' && data->collectibles == 0)
 	{
 		write(1, "Congrats! You finished the level!\n", 35);
 		exit(0);
 	}
 	return (1);
+}
+
+void	check_map_name(const char *str)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	if (str[i] == 'r')
+	{
+		i--;
+			if(str[i] == 'e')
+				i--;
+					if (str[i] == 'b')
+						i--;
+							if (str[i] == '.')
+								return;
+	}
+	else
+		error_message("Map is not the correct extension. Please write a .ber extension");
 }

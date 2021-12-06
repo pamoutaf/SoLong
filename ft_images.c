@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_images.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:49:40 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/11/30 15:21:54 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:29:56 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_pos png_to_win(t_global *global)
 	t_pos	pos;
 	t_pos player;
 	
+	global->map_data->collectibles = 0;
 	pos.y = 0;
 	while (pos.y < global->map_data->height)
 	{
@@ -52,8 +53,10 @@ t_pos png_to_win(t_global *global)
 				player = pos;
 			}
 			if(global->map_data->map[pos.y][pos.x] == 'C')
+			{
 				mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_collectibles, pos.x * 64, pos.y * 64);
-
+				global->map_data->collectibles++;
+			}
 			pos.x++;
 		}
 		pos.y++;

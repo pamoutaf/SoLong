@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/03 13:38:30 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:40:38 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void move_right(t_global *global, t_map_data *data)
 	y = global->pos.y;
 	if (can_move(data, x + 1, y))
 	{
-		if(global->map_data->map[y][x] == 'E')
+		if (global->map_data->map[y][x] == 'E')
 			mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
 		add = ft_itoa(global->map_data->steps);
 		mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_wall, 0, 0);
@@ -65,7 +65,7 @@ void move_left(t_global *global, t_map_data *data)
 	
 	if (can_move(data, x - 1, y))
 	{
-		if(global->map_data->map[y][x] == 'E')
+		if (global->map_data->map[y][x] == 'E')
 			mlx_put_image_to_window(global->mlx, global->win, global->img->sprite_player_front, global->pos.x * 64, global->pos.y * 64);
 		add = ft_itoa(global->map_data->steps);
 		printf("first step : %i\n", global->map_data->steps);

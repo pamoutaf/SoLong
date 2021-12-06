@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pamoutaf <pamoutaf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/05 14:49:36 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:53:06 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_map_data
 	char	**map;
 	int		fd;
 	int		steps;
+	int		collectibles;
 }				t_map_data;
 
 typedef struct s_global
@@ -53,7 +54,7 @@ typedef struct s_global
 	t_pos		pos;
 	t_map_data	*map_data;
 }				t_global;
-//TODO (paula 24 nov): makefile headers dependencies
+
 t_map_data	*parse_map(const char *filename, t_map_data *data);
 int			key_hook(int keycode, void *param);
 void		load_img(void *mlx_ptr, t_sprite *sprite);
@@ -73,5 +74,7 @@ void		check_map_len(t_map_data *data);
 void		check_one_map(t_map_data *data);
 void		is_player(t_map_data *data);
 void		is_exit(t_map_data *data);
+void		check_map_character(t_map_data *data);
+void		check_map_name(const char *str);
 
 #endif
