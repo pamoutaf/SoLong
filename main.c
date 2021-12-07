@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 15:00:08 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:17:56 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main(int argc, char **argv)
 	load_img(g.mlx, g.i);
 	png_to_win(&g);
 	mlx_hook(g.w, 2, 0, key_hook, &g);
-	mlx_hook(g.w,  17, 1L<<17, button_hook, &g);
+	mlx_hook(g.w, 17, 1L << 17, button_hook, &g);
 	mlx_loop(g.mlx);
 }
