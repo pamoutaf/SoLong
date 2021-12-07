@@ -6,16 +6,16 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 12:56:32 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 14:40:12 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#ifndef SOLONG_H
+# define SOLONG_H
 
-#include <fcntl.h>
-#include "gnl/get_next_line.h"
-#include <stdio.h>
+# include <fcntl.h>
+# include "gnl/get_next_line.h"
+# include <stdio.h>
 
 typedef struct s_pos
 {
@@ -66,7 +66,7 @@ void		move_back(t_global *global, t_map_data *data);
 int			can_move(t_map_data *data, int x, int y);
 void		move_vertical(t_global *global, t_map_data *data, int direction);
 void		move_horizontal(t_global *global, t_map_data *data, int direction);
-void		error_message();
+void		error_message(char *str);
 void		ft_put_steps(t_global *global);
 char		*ft_itoa(int n);
 int			ft_putchar_fd(char c, int fd);
