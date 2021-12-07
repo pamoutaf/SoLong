@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/06 23:10:38 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 12:56:32 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ typedef struct s_pos
 
 typedef struct s_sprite
 {
-	void	*empty;
+	void	*e;
 	void	*wall;
 	void	*end;
-	void	*face;
+	void	*f;
 	void	*p_left;
 	void	*p_right;
 	void	*back;
@@ -38,7 +38,7 @@ typedef struct s_sprite
 typedef struct s_map_data
 {
 	int		i;
-	int		height;
+	int		h;
 	int		len;
 	char	**map;
 	int		fd;
@@ -48,11 +48,11 @@ typedef struct s_map_data
 
 typedef struct s_global
 {
-	void		*win;
+	void		*w;
 	void		*mlx;
-	t_sprite	*img;
-	t_pos		pos;
-	t_map_data	*map_data;
+	t_sprite	*i;
+	t_pos		p;
+	t_map_data	*mdata;
 }				t_global;
 
 t_map_data	*parse_map(const char *filename, t_map_data *data);

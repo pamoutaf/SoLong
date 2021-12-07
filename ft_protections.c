@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:35:37 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/06 22:42:26 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 13:34:19 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	is_player(t_map_data *data)
 		while (data->map[j][i])
 		{
 			if (data->map[j][i] == 'P')
-				return;
+				return ;
 			i++;
 		}
-		j++; 
+		j++;
 	}
 	error_message("No player found. Please write a correct map");
 }
@@ -47,10 +47,10 @@ void	is_exit(t_map_data *data)
 		while (data->map[j][i])
 		{
 			if (data->map[j][i] == 'E')
-				return;
+				return ;
 			i++;
 		}
-		j++; 
+		j++;
 	}
 	error_message("No exit found. Please write a correct map");
 }
@@ -58,13 +58,14 @@ void	is_exit(t_map_data *data)
 void	check_map_len(t_map_data *data)
 {
 	size_t	i;
-	int	j;
-	
+	int		j;
+
 	j = 0;
 	i = ft_strlen(data->map[j]);
 	while (data->map[j])
 	{
-		if (i == ft_strlen(data->map[j]) || (j == data->height - 1 && i == ft_strlen(data->map[0]) - 1))
+		if (i == ft_strlen(data->map[j]) || (j == data->h - 1
+				&& i == ft_strlen(data->map[0]) - 1))
 			printf("%s\n", data->map[j++]);
 		else
 			error_message("Map length not identical");
@@ -75,21 +76,21 @@ void	check_one_map(t_map_data *data)
 {
 	int	i;
 	int	j;
-	int k;
+	int	k;
 
 	j = 0;
 	i = 0;
 	k = ft_strlen(data->map[0]);
-	printf("map data height is : %i\n", data->height);
+	printf("map data height is : %i\n", data->h);
 	while (data->map[j][i])
 	{
-		if (data->map[j][i] == '1' && data->map[data->height - 1][i] == '1')
+		if (data->map[j][i] == '1' && data->map[data->h - 1][i] == '1')
 			i++;
 		else
 			error_message("Map is not surrounded by one's\n");
 	}
 	j = 1;
-	while (j < data->height - 1)
+	while (j < data->h - 1)
 	{
 		if (data->map[j][0] == '1' && data->map[j][k - 1] == '1')
 			j++;
@@ -118,24 +119,4 @@ int	can_move(t_map_data *data, int x, int y)
 		exit(0);
 	}
 	return (1);
-}
-
-void	check_map_name(const char *str)
-{
-	int	i;
-
-	i = ft_strlen(str);
-	i--;
-	if (str[i] == 'r')
-	{
-		i--;
-			if(str[i] == 'e')
-				i--;
-					if (str[i] == 'b')
-						i--;
-							if (str[i] == '.')
-								return;
-	}
-	else
-		error_message("Map is not the correct extension. Please write a .ber extension");
 }

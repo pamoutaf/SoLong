@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/06 22:08:18 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 13:38:03 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	count_lines(const char *map)
 	return (numlines);
 }
 
-void end_of_file(t_map_data *data)
+void	end_of_file(t_map_data *data)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	while (j < data->height)
+	while (j < data->h)
 	{
 		i = 0;
 		while (data->map[j][i])
@@ -72,20 +72,20 @@ void	error_message(char *str)
 	exit(0);
 }
 
-t_map_data *parse_map(const char *filename, t_map_data *data)
+t_map_data	*parse_map(const char *filename, t_map_data *data)
 {
 	int	i;
 	int	fd;
-	
-	data->height = count_lines(filename);
-	data->map = malloc(sizeof(char *) * (data->height + 1));
+
+	data->h = count_lines(filename);
+	data->map = malloc(sizeof(char *) * (data->h + 1));
 	if (!data->map)
 		error_message("Map Allocation Failed");
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		error_message("File Descriptor not found");
 	i = 0;
-	while (i < data->height)
+	while (i < data->h)
 		data->map[i++] = get_next_line(fd);
 	end_of_file(data);
 	data->len = ft_strlen(data->map[0]);
