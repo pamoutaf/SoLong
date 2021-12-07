@@ -6,11 +6,11 @@
 #    By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/12/07 14:58:03 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/12/07 17:06:21 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = solong
+NAME = so_long
 
 SRCS_GNL = ./gnl/
 

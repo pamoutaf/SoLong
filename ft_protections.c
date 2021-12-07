@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:35:37 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 15:52:01 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:21:22 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	is_player(t_map_data *data)
 {
 	int	i;
 	int	j;
+	int	num_player;
 
+	num_player = 0;
 	j = 0;
 	i = 0;
 	while (data->map[j])
@@ -26,12 +28,13 @@ void	is_player(t_map_data *data)
 		while (data->map[j][i])
 		{
 			if (data->map[j][i] == 'P')
-				return ;
+				num_player++;
 			i++;
 		}
 		j++;
 	}
-	error_message("No player found. Please write a correct map");
+	if (num_player != 1)
+		error_message("Provide (only) one player");
 }
 
 void	is_exit(t_map_data *data)
