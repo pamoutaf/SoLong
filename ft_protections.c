@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:35:37 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 13:34:19 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:52:01 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	is_player(t_map_data *data)
 
 	j = 0;
 	i = 0;
-	while (data->map[j] || data->map[0][i])
+	while (data->map[j])
 	{
 		i = 0;
 		while (data->map[j][i])
@@ -41,7 +41,7 @@ void	is_exit(t_map_data *data)
 
 	j = 0;
 	i = 0;
-	while (data->map[j] || data->map[0][i])
+	while (data->map[j])
 	{
 		i = 0;
 		while (data->map[j][i])
@@ -61,11 +61,10 @@ void	check_map_len(t_map_data *data)
 	int		j;
 
 	j = 0;
-	i = ft_strlen(data->map[j]);
+	i = ft_strlen(data->map[0]);
 	while (data->map[j])
 	{
-		if (i == ft_strlen(data->map[j]) || (j == data->h - 1
-				&& i == ft_strlen(data->map[0]) - 1))
+		if (i == ft_strlen(data->map[j]))
 			printf("%s\n", data->map[j++]);
 		else
 			error_message("Map length not identical");

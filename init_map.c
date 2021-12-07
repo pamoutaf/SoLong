@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:14:43 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 14:35:34 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:01:21 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	error_message(char *str)
 	i = 0;
 	if (!str)
 		return ;
-	write(1, "Error\n", 7);
+	write(2, "Error\n", 7);
 	while (str[i])
 	{
-		ft_putchar_fd(str[i], 1);
+		ft_putchar_fd(str[i], 2);
 		i++;
 	}
 	write(2, "\n", 1);
@@ -77,6 +77,7 @@ t_map_data	*parse_map(const char *filename, t_map_data *data)
 	int	i;
 	int	fd;
 
+	check_map_name(filename);
 	data->h = count_lines(filename);
 	data->map = malloc(sizeof(char *) * (data->h + 1));
 	if (!data->map)
@@ -93,7 +94,6 @@ t_map_data	*parse_map(const char *filename, t_map_data *data)
 	check_one_map(data);
 	is_player(data);
 	is_exit(data);
-	check_map_name(filename);
 	check_map_character(data);
 	return (data);
 }
