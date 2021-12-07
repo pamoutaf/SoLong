@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:04:48 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 17:14:04 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:24:38 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,4 @@ void	check_map_name(const char *str)
 	}
 	else
 		error_message("Please write a .ber extension");
-}
-
-void check_one_player(t_map_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (data->map[j])
-	{
-		
-	}
 }
