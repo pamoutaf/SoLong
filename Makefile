@@ -24,11 +24,14 @@ OBJECTS = $(subst .c,.o,$(SOURCES))
 CFLAGS = -Wall -Wextra -Werror -I libft -I mlx/
 LINKS = -L. -lmlx
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADERS)
+libmlx.dylib:
 			$(MAKE) -C mlx/
 			cp mlx/libmlx.dylib .
+	
+
+$(NAME): $(OBJECTS) $(HEADERS) libmlx.dylib
 			gcc $(OBJECTS) -o $(NAME) $(CFLAGS) $(LINKS)
 
 clean:
