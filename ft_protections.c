@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:35:37 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 17:21:22 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:06:55 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	check_one_map(t_map_data *data)
 		if (data->map[j][i] == '1' && data->map[data->h - 1][i] == '1')
 			i++;
 		else
-			error_message("Map is not surrounded by one's\n");
+			error_message("Map is not surrounded by one's");
 	}
 	j = 1;
 	while (j < data->h - 1)
@@ -97,7 +97,7 @@ void	check_one_map(t_map_data *data)
 		if (data->map[j][0] == '1' && data->map[j][k - 1] == '1')
 			j++;
 		else
-			error_message("Map not surrounded by one's\n");
+			error_message("Map not surrounded by one's");
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 10:20:45 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 15:17:56 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:19:51 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(int argc, char **argv)
 		error_message("Please enter a map");
 	g.mdata = &mdata;
 	parse_map(argv[1], g.mdata);
-	g.mlx = mlx_init();
-	g.w = mlx_new_window(g.mlx, g.mdata->len * 64, g.mdata->h * 64, "SoLong");
+	init_new_window(&g);
 	g.mdata->steps = 1;
 	g.mdata->collectibles = 0;
 	g.i = &sprite;

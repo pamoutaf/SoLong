@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:17:06 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 15:07:16 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:19:42 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void		is_exit(t_map_data *data);
 void		check_map_character(t_map_data *data);
 void		check_map_name(const char *str);
 int			button_hook(void *param);
+void		init_new_window(t_global *g);
 
 #endif

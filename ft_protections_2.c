@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:04:48 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 17:24:38 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:31:02 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,16 @@ void	check_map_name(const char *str)
 			}
 		}
 	}
-	else
-		error_message("Please write a .ber extension");
+	error_message("Please write a .ber extension");
+}
+
+void	init_new_window(t_global *g)
+{
+	g->mlx = mlx_init();
+	if (g->mlx == NULL)
+		error_message("failed to set up the connection to the display");
+	g->w = mlx_new_window(g->mlx, g->mdata->len * 64,
+			g->mdata->h * 64, "SoLong");
+	if (g->w == NULL)
+		error_message("failed to create a new window");
 }

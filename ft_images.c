@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:49:40 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 12:56:47 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:29:33 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	load_img(void *mlx_ptr, t_sprite *s)
 	s->p_right = mlx_png_file_to_image(mlx_ptr, "./img/right.png", &w, &h);
 	s->back = mlx_png_file_to_image(mlx_ptr, "./img/back.png", &w, &h);
 	s->coll = mlx_png_file_to_image(mlx_ptr, "./img/ring.png", &w, &h);
+	if (!s->wall || !s->e || !s->end || !s->f || !s->p_left || !s->p_right
+		|| !s->back || !s->coll)
+		error_message("Failed to load image");
 }
 
 static void	process_map_tile(t_global *g, t_pos po, char tile_char)
