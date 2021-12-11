@@ -6,7 +6,7 @@
 #    By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/19 14:15:30 by pamoutaf          #+#    #+#              #
-#    Updated: 2021/12/08 12:51:40 by pamoutaf         ###   ########.fr        #
+#    Updated: 2021/12/11 11:56:19 by pamoutaf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ HEADERS =	solong.h mlx/mlx.h gnl/get_next_line.h
 
 OBJECTS = $(subst .c,.o,$(SOURCES))
 
-CFLAGS = -Wall -Wextra -Werror -I mlx/
+CFLAGS = -Wall -Wextra -Werror -I mlx/ -g -fsanitize=address
 LINKS = -L. -lmlx
 
 all: $(NAME)

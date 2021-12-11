@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 15:07:54 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/07 13:16:18 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:51:26 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	move_right(t_global *g, t_map_data *data)
 			mlx_put_image_to_window(g->mlx, g->w, g->i->f,
 				g->p.x * 64, g->p.y * 64);
 		add = ft_itoa(g->mdata->steps);
+		protection_itoa(add);
 		mlx_put_image_to_window(g->mlx, g->w, g->i->wall, 0, 0);
 		mlx_string_put(g->mlx, g->w, 10, 10, 0xFFFFFF, add);
-		free(add);
 		printf("total steps so far : %i\n", g->mdata->steps);
 		g->mdata->steps++;
 		mlx_put_image_to_window(g->mlx, g->w, g->i->e,
@@ -72,6 +72,7 @@ void	move_left(t_global *g, t_map_data *data)
 			mlx_put_image_to_window(g->mlx, g->w, g->i->f,
 				g->p.x * 64, g->p.y * 64);
 		add = ft_itoa(g->mdata->steps);
+		protection_itoa(add);
 		mlx_put_image_to_window(g->mlx, g->w, g->i->wall, 0, 0);
 		mlx_string_put(g->mlx, g->w, 10, 10, 0xFFFFFF, add);
 		free(add);
@@ -99,6 +100,7 @@ void	move_front(t_global *g, t_map_data *data)
 			mlx_put_image_to_window(g->mlx, g->w, g->i->f,
 				g->p.x * 64, g->p.y * 64);
 		add = ft_itoa(g->mdata->steps);
+		protection_itoa(add);
 		mlx_put_image_to_window(g->mlx, g->w, g->i->wall, 0, 0);
 		mlx_string_put(g->mlx, g->w, 10, 10, 0xFFFFFF, add);
 		free(add);
@@ -126,6 +128,7 @@ void	move_back(t_global *g, t_map_data *data)
 			mlx_put_image_to_window(g->mlx, g->w, g->i->f,
 				g->p.x * 64, g->p.y * 64);
 		add = ft_itoa(g->mdata->steps);
+		protection_itoa(add);
 		mlx_put_image_to_window(g->mlx, g->w, g->i->wall, 0, 0);
 		mlx_string_put(g->mlx, g->w, 10, 10, 0xFFFFFF, add);
 		free(add);

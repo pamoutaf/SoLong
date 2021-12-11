@@ -6,7 +6,7 @@
 /*   By: pamoutaf <pamoutaf@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 17:04:48 by pamoutaf          #+#    #+#             */
-/*   Updated: 2021/12/10 18:31:02 by pamoutaf         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:38:26 by pamoutaf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,10 @@ void	init_new_window(t_global *g)
 			g->mdata->h * 64, "SoLong");
 	if (g->w == NULL)
 		error_message("failed to create a new window");
+}
+
+void	protection_itoa(char *s)
+{
+	if (s == NULL)
+		error_message("Itoa failed");
 }
